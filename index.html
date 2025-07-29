@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Financial Advisor</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800 p-4 min-h-screen flex items-center justify-center">
+    <div class="container max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-8 space-y-8 border border-gray-200">
+     
+        <header class="text-center">
+            <h1 class="text-4xl font-extrabold text-indigo-700 mb-2 flex items-center justify-center">
+                <span class="inline-block mr-3 text-5xl">💰</span>
+                Personalized Financial Advisor
+            </h1>
+            <p class="text-lg text-gray-600">Your path to financial clarity and smart decisions.</p>
+        </header>
+
+       
+        <nav class="flex justify-center space-x-4 bg-gray-100 p-2 rounded-lg shadow-inner">
+            <button id="profileTab" class="tab-button px-6 py-3 rounded-lg font-semibold text-lg transition-all duration-300 ease-in-out bg-indigo-600 text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75">
+                Your Profile
+            </button>
+            <button id="portfolioTab" class="tab-button px-6 py-3 rounded-lg font-semibold text-lg transition-all duration-300 ease-in-out text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75">
+                Portfolio
+            </button>
+            <button id="budgetTab" class="tab-button px-6 py-3 rounded-lg font-semibold text-lg transition-all duration-300 ease-in-out text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75">
+                Budget
+            </button>
+        </nav>
+]
+        <div id="profileSection" class="content-section p-6 bg-white rounded-lg shadow-md border border-gray-100">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-6 text-center">Your Financial Profile</h2>
+            <form id="profileForm" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="John Doe">
+                </div>
+                <div>
+                    <label for="age" class="block text-sm font-medium text-gray-700 mb-1">Age</label>
+                    <input type="number" id="age" name="age" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="30">
+                </div>
+                <div>
+                    <label for="income" class="block text-sm font-medium text-gray-700 mb-1">Annual Income ($)</label>
+                    <input type="number" id="income" name="income" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="50000">
+                </div>
+                <div>
+                    <label for="riskTolerance" class="block text-sm font-medium text-gray-700 mb-1">Risk Tolerance</label>
+                    <select id="riskTolerance" name="riskTolerance" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+                        <option value="low">Low (Conservative)</option>
+                        <option value="medium">Medium (Balanced)</option>
+                        <option value="high">High (Aggressive)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="financialGoal" class="block text-sm font-medium text-gray-700 mb-1">Main Financial Goal</label>
+                    <textarea id="financialGoal" name="financialGoal" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="e.g., Save for retirement, Buy a house, Fund child's education"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out shadow-lg text-lg font-semibold">
+                    Save Profile
+                </button>
+                <p id="profileMessage" class="mt-4 text-center text-sm font-medium"></p>
+            </form>
+        </div>
+
+        <div id="portfolioSection" class="content-section hidden p-6 bg-white rounded-lg shadow-md border border-gray-100">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-6 text-center">Your Personalized Portfolio Recommendation</h2>
+            <div id="portfolioContent">
+                <p class="text-gray-700 text-center text-lg">Please complete your financial profile to get a personalized portfolio recommendation.</p>
+            </div>
+            <p class="mt-8 text-sm text-gray-500 text-center">
+                *This is a simplified recommendation for illustrative purposes. A real financial advisor would consider many more factors.
+            </p>
+        </div>
+
+        <div id="budgetSection" class="content-section hidden p-6 bg-white rounded-lg shadow-md border border-gray-100">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-6 text-center">Your Budget</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 text-center">
+                <div class="bg-green-50 p-5 rounded-lg shadow-sm border border-green-200">
+                    <h3 class="font-medium text-green-800 text-lg">Total Income</h3>
+                    <p id="totalIncome" class="text-3xl font-bold text-green-700 mt-1">$0.00</p>
+                </div>
+                <div class="bg-red-50 p-5 rounded-lg shadow-sm border border-red-200">
+                    <h3 class="font-medium text-red-800 text-lg">Total Expenses</h3>
+                    <p id="totalExpense" class="text-3xl font-bold text-red-700 mt-1">$0.00</p>
+                </div>
+                <div class="p-5 rounded-lg shadow-sm border border-blue-200 bg-blue-50">
+                    <h3 class="font-medium text-blue-800 text-lg">Net Balance</h3>
+                    <p id="netBalance" class="text-3xl font-bold text-blue-700 mt-1">$0.00</p>
+                </div>
+            </div>
+
+            <!-- Add Income -->
+            <div class="mb-8 p-5 border border-gray-200 rounded-lg shadow-sm bg-gray-50">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Add New Income</h3>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" id="newIncomeDescription" class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Income Description (e.g., Salary)">
+                    <input type="number" id="newIncomeAmount" class="w-full sm:w-36 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Amount">
+                    <button id="addIncomeBtn" class="w-full sm:w-auto bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-150 ease-in-out shadow-md font-medium">
+                        Add Income
+                    </button>
+                </div>
+            </div>
+
+            <!-- Income List -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Income History</h3>
+                <div id="incomeList" class="space-y-3 max-h-60 overflow-y-auto pr-2">
+                    <p class="text-gray-500 text-center" id="noIncomeMessage">No income recorded yet.</p>
+                </div>
+            </div>
+
+            <!-- Add Expense -->
+            <div class="mb-8 p-5 border border-gray-200 rounded-lg shadow-sm bg-gray-50">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Add New Expense</h3>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" id="newExpenseDescription" class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Expense Description (e.g., Rent, Groceries)">
+                    <input type="number" id="newExpenseAmount" class="w-full sm:w-36 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Amount">
+                    <button id="addExpenseBtn" class="w-full sm:w-auto bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition duration-150 ease-in-out shadow-md font-medium">
+                        Add Expense
+                    </button>
+                </div>
+            </div>
+
+            <!-- Expense List -->
+            <div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Expense History</h3>
+                <div id="expenseList" class="space-y-3 max-h-60 overflow-y-auto pr-2">
+                    <p class="text-gray-500 text-center" id="noExpenseMessage">No expenses recorded yet.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-sm mt-8">
+            &copy; 2025 Personalized Financial Advisor. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+
+        const USER_ID = "web_demo_user_123"; 
+
+        function loadData() {
+            const data = localStorage.getItem('financial_advisor_data');
+            if (data) {
+                return JSON.parse(data);
+            }
+            return {
+                userProfiles: {},
+                budgetIncomes: {},
+                budgetExpenses: {}
+            };
+        }
+
+        function saveData(data) {
+            localStorage.setItem('financial_advisor_data', JSON.stringify(data));
+        }
+
+        let financialData = loadData();
+
+        if (!financialData.userProfiles[USER_ID]) {
+            financialData.userProfiles[USER_ID] = {
+                name: '', age: '', income: '', riskTolerance: 'medium', financialGoal: ''
+            };
+        }
+        if (!financialData.budgetIncomes[USER_ID]) {
+            financialData.budgetIncomes[USER_ID] = [];
+        }
+        if (!financialData.budgetExpenses[USER_ID]) {
+            financialData.budgetExpenses[USER_ID] = [];
+        }
+        saveData(financialData); 
+
+        const profileTab = document.getElementById('profileTab');
+        const portfolioTab = document.getElementById('portfolioTab');
+        const budgetTab = document.getElementById('budgetTab');
+
+        const profileSection = document.getElementById('profileSection');
+        const portfolioSection = document.getElementById('portfolioSection');
+        const budgetSection = document.getElementById('budgetSection');
+
+        const profileForm = document.getElementById('profileForm');
+        const profileMessage = document.getElementById('profileMessage');
+
+        const portfolioContent = document.getElementById('portfolioContent');
+
+        const totalIncomeEl = document.getElementById('totalIncome');
+        const totalExpenseEl = document.getElementById('totalExpense');
+        const netBalanceEl = document.getElementById('netBalance');
+        const newIncomeDescriptionEl = document.getElementById('newIncomeDescription');
+        const newIncomeAmountEl = document.getElementById('newIncomeAmount');
+        const addIncomeBtn = document.getElementById('addIncomeBtn');
+        const incomeListEl = document.getElementById('incomeList');
+        const noIncomeMessageEl = document.getElementById('noIncomeMessage');
+        const newExpenseDescriptionEl = document.getElementById('newExpenseDescription');
+        const newExpenseAmountEl = document.getElementById('newExpenseAmount');
+        const addExpenseBtn = document.getElementById('addExpenseBtn');
+        const expenseListEl = document.getElementById('expenseList');
+        const noExpenseMessageEl = document.getElementById('noExpenseMessage');
+
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('bg-indigo-600', 'text-white', 'shadow-md', 'hover:bg-indigo-700');
+                button.classList.add('text-gray-700', 'hover:bg-gray-200');
+            });
+            const activeTab = document.getElementById(sectionId.replace('Section', 'Tab'));
+            activeTab.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'hover:bg-indigo-700');
+            activeTab.classList.remove('text-gray-700', 'hover:bg-gray-200');
+
+            if (sectionId === 'profileSection') {
+                loadProfile();
+            } else if (sectionId === 'portfolioSection') {
+                generatePortfolioRecommendation();
+            } else if (sectionId === 'budgetSection') {
+                renderBudget();
+            }
+        }
+
+        profileTab.addEventListener('click', () => showSection('profileSection'));
+        portfolioTab.addEventListener('click', () => showSection('portfolioSection'));
+        budgetTab.addEventListener('click', () => showSection('budgetSection'));
+
+        // --- Profile Logic ---
+        function loadProfile() {
+            const userProfile = financialData.userProfiles[USER_ID];
+            document.getElementById('name').value = userProfile.name || '';
+            document.getElementById('age').value = userProfile.age || '';
+            document.getElementById('income').value = userProfile.income || '';
+            document.getElementById('riskTolerance').value = userProfile.riskTolerance || 'medium';
+            document.getElementById('financialGoal').value = userProfile.financialGoal || '';
+        }
+
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const age = document.getElementById('age').value.trim();
+            const income = document.getElementById('income').value.trim();
+            const riskTolerance = document.getElementById('riskTolerance').value;
+            const financialGoal = document.getElementById('financialGoal').value.trim();
+
+            financialData.userProfiles[USER_ID] = {
+                name: name,
+                age: age ? parseInt(age) : '',
+                income: income ? parseFloat(income) : '',
+                riskTolerance: riskTolerance,
+                financialGoal: financialGoal
+            };
+            saveData(financialData);
+
+            profileMessage.textContent = 'Profile saved successfully!';
+            profileMessage.className = 'mt-4 text-center text-green-600 text-sm font-medium';
+            setTimeout(() => { profileMessage.textContent = ''; }, 3000);
+            console.log("Profile saved:", financialData.userProfiles[USER_ID]);
+        });
+
+        // --- Portfolio Logic ---
+        function generatePortfolioRecommendation() {
+            const userProfile = financialData.userProfiles[USER_ID];
+            let recommendation = {};
+
+            if (!userProfile.name || !userProfile.age || !userProfile.income || !userProfile.riskTolerance || !userProfile.financialGoal) {
+                portfolioContent.innerHTML = `
+                    <p class="text-gray-700 text-center text-lg">
+                        Please complete your financial profile (Name, Age, Income, Risk Tolerance, Financial Goal) to get a personalized recommendation.
+                    </p>
+                `;
+                return;
+            }
+
+            const riskTolerance = userProfile.riskTolerance.toLowerCase();
+
+            switch (riskTolerance) {
+                case 'low':
+                    recommendation = {
+                        description: "A conservative portfolio focusing on capital preservation.",
+                        allocation: [
+                            { asset: "Bonds", percentage: "60%" },
+                            { asset: "Large-Cap Stocks", percentage: "25%" },
+                            { asset: "Real Estate (REITs)", percentage: "10%" },
+                            { asset: "Cash/Money Market", percentage: "5%" },
+                        ],
+                        expectedReturn: "3-5%",
+                        riskLevel: "Low",
+                    };
+                    break;
+                case 'medium':
+                    recommendation = {
+                        description: "A balanced portfolio aiming for growth with moderate risk.",
+                        allocation: [
+                            { asset: "Large-Cap Stocks", percentage: "40%" },
+                            { asset: "Bonds", percentage: "30%" },
+                            { asset: "Mid-Cap Stocks", percentage: "15%" },
+                            { asset: "International Stocks", percentage: "10%" },
+                            { asset: "Commodities", percentage: "5%" },
+                        ],
+                        expectedReturn: "6-9%",
+                        riskLevel: "Medium",
+                    };
+                    break;
+                case 'high':
+                    recommendation = {
+                        description: "An aggressive portfolio focused on maximizing long-term growth.",
+                        allocation: [
+                            { asset: "Large-Cap Stocks", percentage: "30%" },
+                            { asset: "Small/Mid-Cap Stocks", percentage: "25%" },
+                            { asset: "International Stocks", percentage: "20%" },
+                            { asset: "Emerging Markets", percentage: "15%" },
+                            { asset: "Growth Stocks/Tech", percentage: "10%" },
+                        ],
+                        expectedReturn: "10-15%",
+                        riskLevel: "High",
+                    };
+                    break;
+                default:
+                    recommendation = { description: "Invalid risk tolerance. Please choose low, medium, or high in your profile." };
+            }
+
+            let allocationHtml = '';
+            if (recommendation.allocation) {
+                allocationHtml = `
+                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Asset Allocation:</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        ${recommendation.allocation.map(item => `
+                            <li class="text-gray-700">
+                                <span class="font-medium">${item.asset}:</span> ${item.percentage}
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+            }
+
+            portfolioContent.innerHTML = `
+                <div>
+                    <p class="mb-4 text-lg text-gray-700">${recommendation.description}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-blue-50 p-4 rounded-md border border-blue-200">
+                            <h3 class="font-medium text-blue-800">Expected Annual Return:</h3>
+                            <p class="text-2xl font-bold text-blue-700 mt-1">${recommendation.expectedReturn || 'N/A'}</p>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-md border border-red-200">
+                            <h3 class="font-medium text-red-800">Risk Level:</h3>
+                            <p class="text-2xl font-bold text-red-700 mt-1">${recommendation.riskLevel || 'N/A'}</p>
+                        </div>
+                    </div>
+                    ${allocationHtml}
+                </div>
+            `;
+        }
+
+        // --- Budgeting Logic ---
+        function renderBudget() {
+            const incomes = financialData.budgetIncomes[USER_ID];
+            const expenses = financialData.budgetExpenses[USER_ID];
+
+            const totalIncome = incomes.reduce((sum, item) => sum + item.amount, 0);
+            const totalExpense = expenses.reduce((sum, item) => sum + item.amount, 0);
+            const netBalance = totalIncome - totalExpense;
+
+            totalIncomeEl.textContent = `$${totalIncome.toFixed(2)}`;
+            totalExpenseEl.textContent = `$${totalExpense.toFixed(2)}`;
+            netBalanceEl.textContent = `$${netBalance.toFixed(2)}`;
+            netBalanceEl.parentElement.classList.remove('bg-blue-50', 'bg-orange-50');
+            netBalanceEl.parentElement.classList.add(netBalance >= 0 ? 'bg-blue-50' : 'bg-orange-50');
+            netBalanceEl.classList.remove('text-blue-700', 'text-orange-700');
+            netBalanceEl.classList.add(netBalance >= 0 ? 'text-blue-700' : 'text-orange-700');
+
+
+            // Render Income List
+            incomeListEl.innerHTML = '';
+            if (incomes.length === 0) {
+                noIncomeMessageEl.classList.remove('hidden');
+            } else {
+                noIncomeMessageEl.classList.add('hidden');
+                // Sort by timestamp, newest first
+                const sortedIncomes = [...incomes].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                sortedIncomes.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-md shadow-sm border border-gray-100';
+                    const datePart = item.timestamp ? item.timestamp.substring(0, 10) : 'N/A';
+                    li.innerHTML = `
+                        <span>${item.description} - <span class="font-medium text-green-700">$${item.amount.toFixed(2)}</span> (${datePart})</span>
+                        <button data-id="${item.id}" data-type="income" class="delete-item-btn text-red-500 hover:text-red-700 text-sm font-medium transition-colors duration-150">
+                            Delete
+                        </button>
+                    `;
+                    incomeListEl.appendChild(li);
+                });
+            }
+
+            // Render Expense List
+            expenseListEl.innerHTML = '';
+            if (expenses.length === 0) {
+                noExpenseMessageEl.classList.remove('hidden');
+            } else {
+                noExpenseMessageEl.classList.add('hidden');
+                // Sort by timestamp, newest first
+                const sortedExpenses = [...expenses].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                sortedExpenses.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'flex justify-between items-center bg-gray-50 p-3 rounded-md shadow-sm border border-gray-100';
+                    const datePart = item.timestamp ? item.timestamp.substring(0, 10) : 'N/A';
+                    li.innerHTML = `
+                        <span>${item.description} - <span class="font-medium text-red-700">$${item.amount.toFixed(2)}</span> (${datePart})</span>
+                        <button data-id="${item.id}" data-type="expense" class="delete-item-btn text-red-500 hover:text-red-700 text-sm font-medium transition-colors duration-150">
+                            Delete
+                        </button>
+                    `;
+                    expenseListEl.appendChild(li);
+                });
+            }
+
+            // Attach delete event listeners
+            document.querySelectorAll('.delete-item-btn').forEach(button => {
+                button.onclick = (e) => {
+                    const id = e.target.dataset.id;
+                    const type = e.target.dataset.type;
+                    deleteItem(type, id);
+                };
+            });
+        }
+
+        addIncomeBtn.addEventListener('click', () => {
+            const description = newIncomeDescriptionEl.value.trim();
+            const amount = parseFloat(newIncomeAmountEl.value);
+            if (description && !isNaN(amount) && amount > 0) {
+                addItem('income', description, amount);
+                newIncomeDescriptionEl.value = '';
+                newIncomeAmountEl.value = '';
+            } else {
+                alert('Please enter a valid description and a positive amount for income.');
+            }
+        });
+
+        addExpenseBtn.addEventListener('click', () => {
+            const description = newExpenseDescriptionEl.value.trim();
+            const amount = parseFloat(newExpenseAmountEl.value);
+            if (description && !isNaN(amount) && amount > 0) {
+                addItem('expense', description, amount);
+                newExpenseDescriptionEl.value = '';
+                newExpenseAmountEl.value = '';
+            } else {
+                alert('Please enter a valid description and a positive amount for expense.');
+            }
+        });
+
+        function addItem(type, description, amount) {
+            const item = {
+                id: Date.now().toString(), // Simple unique ID
+                description: description,
+                amount: amount,
+                timestamp: new Date().toISOString()
+            };
+
+            if (type === 'income') {
+                financialData.budgetIncomes[USER_ID].push(item);
+            } else if (type === 'expense') {
+                financialData.budgetExpenses[USER_ID].push(item);
+            }
+            saveData(financialData);
+            renderBudget(); // Re-render the budget section
+        }
+
+        function deleteItem(type, id) {
+            if (type === 'income') {
+                financialData.budgetIncomes[USER_ID] = financialData.budgetIncomes[USER_ID].filter(item => item.id !== id);
+            } else if (type === 'expense') {
+                financialData.budgetExpenses[USER_ID] = financialData.budgetExpenses[USER_ID].filter(item => item.id !== id);
+            }
+            saveData(financialData);
+            renderBudget(); // Re-render the budget section
+        }
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('profileSection'); // Show profile section by default
+        });
+    </script>
+</body>
+</html>
